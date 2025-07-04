@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1B1C1D; /* Dark background */
+            color: #FFFFFF; /* White text for the body */
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for aesthetic appeal */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #282C34; /* Darker track for scrollbar */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #666; /* Dark gray thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888; /* Lighter on hover */
+        }
+        /* Offset for fixed header when scrolling to anchor */
+        section:target::before {
+            content: "";
+            display: block;
+            height: 80px; /* Height of your fixed header */
+            margin-top: -80px; /* Negative margin to pull content up */
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Custom scrollbar for the entire member card content */
+        .member-card-scrollable::-webkit-scrollbar {
+            width: 6px;
+        }
+        .member-card-scrollable::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1); /* Keep transparent track */
+            border-radius: 10px;
+        }
+        .member-card-scrollable::-webkit-scrollbar-thumb {
+            background: #666 !important; /* Solid color for scrollbar thumb */
+            border-radius: 10px;
+        }
+        .member-card-scrollable::-webkit-scrollbar-thumb:hover {
+            background: #999 !important; /* Darker solid color on hover */
+        }
+
+        /* Custom scrollbar for the table container */
+        .table-scrollable::-webkit-scrollbar {
+            width: 8px;
+        }
+        .table-scrollable::-webkit-scrollbar-track {
+            background: #282C34; /* Darker track for table scrollbar */
+            border-radius: 10px;
+        }
+        .table-scrollable::-webkit-scrollbar-thumb {
+            background: #666; /* Dark gray thumb */
+            border-radius: 10px;
+        }
+        .table-scrollable::-webkit-scrollbar-thumb:hover {
+            background: #999; /* Lighter on hover */
+        }
+
+        /* Style for the active navigation link */
+        .nav-link.active {
+            color: #60A5FA; /* A lighter blue to indicate active state on dark bg */
+            font-weight: 600; /* Bolder text */
+            border-bottom: 2px solid #60A5FA; /* Underline effect */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-[#222324] shadow-md py-4 px-8 fixed w-full top-0 z-50 rounded-b-xl">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">OKAY NA TO</div>
+            <div class="flex space-x-6">
+                <a href="#home-section" class="nav-link text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">Home</a>
+                <a href="#details-table-section" class="nav-link text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">Team</a>
+                <a href="#skill-section" class="nav-link text-gray-300 hover:text-blue-400 font-medium transition-colors duration-200">Skills</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-20">
+
+        <div class="w-full max-w-6xl flex flex-col md:flex-row md:items-start gap-8 mb-16">
+
+            <section id="home-section" class="w-full md:w-1/2 bg-[#222324] rounded-xl shadow-lg p-8 text-left flex flex-col justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Welcome!</h2>
+                    <p class="text-gray-300 mb-8">
+                        We are a dedicated team passionate about creating innovative solutions. Explore our work, meet the talented individuals behind it, and learn about our journey.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                    <a href="projects.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 shadow-md">
+                        View Projects
+                    </a>
+                </div>
+            </section>
+
+            <section id="team-section" class="w-full md:w-1/2 bg-[#222324] shadow-lg p-5 pt-13 rounded-md"> <h2 class="text-4xl font-bold text-center text-white mb-10">Our Team</h2>
+
+                <div class="relative overflow-hidden">
+                    <div id="members-container" class="flex transition-transform duration-500 ease-in-out">
+                        <div class="flex-none w-full p-4">
+                            <div class="bg-gradient-to-br from-blue-700 to-purple-800 shadow-xl rounded-lg p-6 text-white text-center flex flex-col items-center justify-start h-[450px] overflow-y-auto member-card-scrollable">
+                                <h3 class="text-3xl font-bold mb-1 flex-shrink-0">Rodel Christian O. Martinez</h3>
+                                <p class="text-lg font-light opacity-90 mb-4 flex-shrink-0">Back End Developer</p>
+                                <div class="relative mb-4 flex-shrink-0">
+                                    <img src="rodel3.jpg" alt="Rodel Christian O. Martinez" class="w-48 h-48 rounded-full mx-auto border-4 border-white shadow-lg object-cover object-center">
+                                </div>
+                                
+                                <a href="https://rodel1212.github.io/rodel12-github.io/" target="_blank" rel="noopener noreferrer" class="block w-full max-w-xs bg-gray-700 text-white py-3 rounded-md hover:bg-gray-600 transition-colors duration-200 text-center font-medium shadow-md mb-4 flex-shrink-0">
+                                    View Personal Portfolio
+                                </a>
+                                <p class="text-sm leading-relaxed text-gray-200 flex-grow text-left">
+                                    Rodel is a dedicated back-end developer with a strong focus on creating robust and scalable server-side applications. His expertise includes database management, API development, and system architecture. He is passionate about optimizing performance and ensuring data integrity.
+                                    <br><br>
+                                    He consistently delivers high-quality code and is an active contributor to various development communities. Rodel enjoys tackling complex technical challenges and continuously learning new technologies to enhance his skills.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex-none w-full p-4">
+                            <div class="bg-gradient-to-br from-green-700 to-teal-800 shadow-xl rounded-lg p-6 text-white text-center flex flex-col items-center justify-start h-[450px] overflow-y-auto member-card-scrollable">
+                                <h3 class="text-3xl font-bold mb-1 flex-shrink-0">Gian Thyron Olic-Olic</h3>
+                                <p class="text-lg font-light opacity-90 mb-4 flex-shrink-0">Front End Developer</p>
+                                <div class="relative mb-4 flex-shrink-0">
+                                    <img src="gian4.jpg" alt="Gian Thyron Olic-Olic" class="w-48 h-48 rounded-full mx-auto border-4 border-white shadow-lg object-cover object-center">
+                                </div>
+                                
+                                <a href="https://gianthyron.github.io/gian.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full max-w-xs bg-gray-700 text-white py-3 rounded-md hover:bg-gray-600 transition-colors duration-200 text-center font-medium shadow-md mb-4 flex-shrink-0">
+                                    View Personal Portfolio
+                                </a>
+                                <p class="text-sm leading-relaxed text-gray-200 flex-grow text-left">
+                                    Gian is a creative front-end developer with a flair for intuitive user interfaces and engaging web experiences. He excels at transforming design concepts into pixel-perfect, responsive web applications. His skills include modern JavaScript frameworks and CSS preprocessors.
+                                    <br><br>
+                                    He is committed to delivering high-performance and accessible web solutions. Gian enjoys collaborating with designers and back-end developers to bring innovative ideas to life. He is always exploring new UI/UX trends and tools.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex-none w-full p-4">
+                            <div class="bg-gradient-to-br from-red-700 to-orange-800 shadow-xl rounded-lg p-6 text-white text-center flex flex-col items-center justify-start h-[450px] overflow-y-auto member-card-scrollable">
+                                
+                                <h3 class="text-3xl font-bold mb-1 flex-shrink-0">Kyle Pachica</h3>
+                                <p class="text-lg font-light opacity-90 mb-4 flex-shrink-0">UI/UX Designer</p>
+                                <div class="relative mb-4 flex-shrink-0">
+                                    <img src="kyle4.jpg" alt="Kyle's GitHub Project Preview" class="w-48 h-48 rounded-full mx-auto border-4 border-white shadow-lg object-cover object-center">
+                                </div>
+                                <a href="https://kkyle777.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full max-w-xs bg-gray-700 text-white py-3 rounded-md hover:bg-gray-600 transition-colors duration-200 text-center font-medium shadow-md mb-4 flex-shrink-0">
+                                    View Personal Portfolio
+                                </a>
+                                <p class="text-sm leading-relaxed text-gray-200 flex-grow text-left">
+                                    Kyle is a visionary UI/UX designer dedicated to crafting seamless and delightful user experiences. He combines aesthetic sensibilities with a deep understanding of user psychology to create intuitive and effective interfaces. His toolkit includes design software, wireframing, and prototyping.
+                                    <br><br>
+                                    He thrives on user research and iterative design processes, ensuring that every product is user-centric and visually appealing. Kyle is a strong advocate for accessibility and inclusive design principles.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex-none w-full p-4">
+                            <div class="bg-gradient-to-br from-yellow-700 to-pink-800 shadow-xl rounded-lg p-6 text-white text-center flex flex-col items-center justify-start h-[450px] overflow-y-auto member-card-scrollable">
+                                <div class="relative mb-4 flex-shrink-0">
+                                       <h3 class="text-3xl font-bold mb-1 flex-shrink-0">Rodny Montano</h3>
+                                <p class="text-lg font-light opacity-90 mb-4 flex-shrink-0">Project Manager</p>
+                                    <img src="rodny5.jpg" alt="Rodny Montano Profile" class="w-48 h-48 rounded-full mx-auto border-4 border-white shadow-lg object-cover object-center">
+                                </div>
+            
+                                <a href="https://rodknyx.github.io/rodny.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full max-w-xs bg-gray-700 text-white py-3 rounded-md hover:bg-gray-600 transition-colors duration-200 text-center font-medium shadow-md mb-4 flex-shrink-0">
+                                    View Personal Portfolio
+                                </a>
+                                <p class="text-sm leading-relaxed text-gray-200 flex-grow text-left">
+                                    Rodny is an exceptional project manager, ensuring that all projects are delivered on time, within scope, and within budget. He is a master of organization, communication, and risk management. Rodny's leadership keeps teams motivated and focused on shared goals.
+                                    <br><br>
+                                    He is adept at agile methodologies and stakeholder management, consistently fostering positive client relationships. Rodny's strategic thinking and problem-solving abilities are crucial to the successful execution of complex projects.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="prevBtn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 text-white p-3 rounded-full shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="nextBtn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 text-white p-3 rounded-full shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <section id="details-table-section" class="w-full max-w-7xl bg-[#222324] rounded-xl shadow-lg p-8 mb-16">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">Full Member Details</h2>
+
+            <div class="overflow-x-auto rounded-lg shadow-md max-h-96 overflow-y-auto table-scrollable">
+                <table class="min-w-full divide-y divide-gray-700">
+                    <thead class="bg-gray-800 sticky top-0"> <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider rounded-tl-lg">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Role</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Email</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-[#222324] divide-y divide-gray-700">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Rodel Christian O. Martinez</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Back End</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">rodel.martinez0035@gmail.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">09563269602</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Rodny Montano</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Project Manager</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">montanorodny14@gmail.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">09611961987</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Gian Thyron Olic-Olic</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Front End</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">olicolicgianthyron@gmail.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">09911372022</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Kyle Pachica</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">UI/UX</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">kyleflores2002@gmail.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">09652774509</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    <section id="skill-section" class="w-full max-w-6xl bg-[#222324] rounded-xl shadow-lg p-8 mb-16 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Our Core Team Skills</h2>
+        <p class="text-gray-300">Our collective expertise drives innovation and success in every project.</p>
+        <div class="mt-6 mx-auto max-w-md text-left">
+            
+            <div class="mb-6 flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 mr-4">
+                    <i class="fas fa-code text-white text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Programming & Development</h3>
+                    <p class="text-base font-normal text-gray-300">Our team possesses strong capabilities in various programming languages and frameworks, enabling us to build robust and scalable software solutions tailored to diverse needs.</p>
+                </div>
+            </div>
+
+            <div class="mb-6 flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-yellow-600 mr-4">
+                    <i class="fas fa-lightbulb text-white text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white">UI/UX Design</h3>
+                    <p class="text-base font-normal text-gray-300">We excel at creating intuitive, engaging, and visually appealing user interfaces and experiences, ensuring products are not just functional but also a joy to use.</p>
+                </div>
+            </div>
+
+            <div class="mb-6 flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-green-600 mr-4">
+                    <i class="fas fa-project-diagram text-white text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Project Management</h3>
+                    <p class="text-base font-normal text-gray-300">With expertise in agile methodologies, our team efficiently plans, executes, and monitors projects, consistently delivering on time and within budget while maintaining high quality.</p>
+                </div>
+            </div>
+
+            <div class="mb-6 flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-purple-600 mr-4">
+                    <i class="fas fa-brain text-white text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Problem Solving & Innovation</h3>
+                    <p class="text-base font-normal text-gray-300">We approach challenges with a proactive mindset, combining critical thinking with creative solutions to overcome obstacles and drive continuous improvement and innovation.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const membersContainer = document.getElementById('members-container');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const memberCards = membersContainer.children; // Get all member cards
+            const totalMembers = memberCards.length;
+
+            let currentIndex = 0; // Tracks the index of the first visible card
+
+            // Function to update the slider position based on currentIndex
+            function updateSlider() {
+                // Always show 1 card per slide
+                const cardsToShow = 1;
+
+                // Calculate the translation percentage. Each card takes 100% of its parent's width in the flex container.
+                const cardWidthPercentage = 100 / cardsToShow; // This will always be 100% when cardsToShow is 1
+                membersContainer.style.transform = `translateX(-${currentIndex * cardWidthPercentage}%)`;
+
+                // Apply disabled styles (optional, as buttons are always enabled for looping)
+                prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+
+            // Event listener for previous button
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalMembers) % totalMembers; // Loop backward
+                updateSlider();
+            });
+
+            // Event listener for next button
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalMembers; // Loop forward
+                updateSlider();
+            });
+
+            // Update slider on window resize (still useful for initial load, though cardsToShow is fixed)
+            window.addEventListener('resize', updateSlider);
+
+            // Initial call to set up the slider
+            updateSlider();
+
+
+            // ******************************************************
+            // New JavaScript for Navigation highlighting
+            // ******************************************************
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Function to remove 'active' class from all links
+            function removeActiveClass() {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+            }
+
+            // Function to add 'active' class to the clicked link
+            function addActiveClass(link) {
+                removeActiveClass(); // First, remove active from others
+                link.classList.add('active'); // Then, add to the clicked one
+            }
+
+            // Add click event listeners to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    addActiveClass(event.target);
+                });
+            });
+
+            // Optional: Highlight the active link on page load based on current URL hash
+            // This is useful if the user lands directly on a section via URL
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                const activeLink = document.querySelector(`.nav-link[href="${currentHash}"]`);
+                if (activeLink) {
+                    addActiveClass(activeLink);
+                }
+            } else {
+                // If no hash, default to highlighting the Home link
+                const homeLink = document.querySelector('.nav-link[href="#home-section"]');
+                if (homeLink) {
+                    addActiveClass(homeLink);
+                }
+            }
+
+            // Optional: Highlight navigation link based on scroll position (more advanced UX)
+            // This section requires more complex logic to determine which section is currently in view
+            // and apply the 'active' class accordingly. For simplicity and direct answer to "when click",
+            // the above click-based activation is sufficient.
+            // If you want active state based on scroll, let me know, it's a bit more code.
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+        }
+        .navbar {
+            background-color: #262626; /* Slightly lighter dark for navbar */
+        }
+        .project-card {
+            background-color: #262626; /* Card background */
+            border-radius: 0.5rem; /* Rounded corners */
+            overflow: hidden; /* Hide overflowing content */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+        }
+        .project-card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+        }
+        .project-image {
+            width: 150%;
+            height: 200px; /* Fixed height for project images */
+            object-fit: cover; /* Cover the area, crop if necessary */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <!-- Back Button -->
+                <button onclick="history.back()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
+                    &larr; Back
+                </button>
+                <a href="#" class="text-white text-2xl font-bold">OKAY NA TO</a>
+            </div>
+            <!-- You can add navigation links here if needed -->
+            <!-- <div class="space-x-4">
+                <a href="#" class="text-gray-300 hover:text-white">Home</a>
+                <a href="#" class="text-gray-300 hover:text-white">About</a>
+                <a href="#" class="text-white font-semibold">Projects</a>
+                <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+            </div> -->
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-8">
+        <h1 class="text-4xl font-bold text-center mb-12 text-white">Our Projects</h1>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            <!-- Project Card 1 -->
+            <div class="project-card">
+                <img src="landing.png" alt="Project 1" class="project-image rounded-t-lg">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2 text-white">Flagship Store E-Commerce Website</h2>
+                    <p class="text-gray-400 text-sm">The Flagship Store E-commerce Website aimed to develop a user-friendly and informative e-commerce website for a clothing and accessories business. The platform will allow customers to browse products, view detailed information including sizes, color availability, even products stocks and have their purchases delivered with shipping costs based on their location.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Optional) -->
+    <footer class="bg-gray-800 text-gray-400 text-center p-4 mt-8">
+        <p>&copy; 2025 OKAY NA TO. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
